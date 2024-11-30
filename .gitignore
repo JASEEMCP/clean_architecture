@@ -17,9 +17,7 @@ migrate_working_dir/
 .idea/
 
 
-# mechine-specific configuration files
-.env.dev
-.env.prod
+# machine-specific configuration files
 **lib/infrastructure/env/prod_env.g.dart
 **lib/infrastructure/env/dev_env.g.dart
 
