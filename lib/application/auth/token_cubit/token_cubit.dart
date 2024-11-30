@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:structure/domain/auth/token.dart';
-import 'package:structure/main.dart';
+import 'package:app/domain/auth/token.dart';
+import 'package:app/main.dart';
 
 
 part 'token_state.dart';

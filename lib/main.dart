@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:structure/domain/app_logic.dart';
-import 'package:structure/presentation/root_app.dart';
-import 'package:structure/resource/db/pref_info.dart';
-import 'package:structure/resource/injectable.dart';
-import 'package:structure/router/router.dart';
-import 'package:structure/styles/styles.dart';
+import 'package:app/domain/app_logic.dart';
+import 'package:app/presentation/root_app.dart';
+import 'package:app/resource/db/pref_info.dart';
+import 'package:app/resource/injectable.dart';
+import 'package:app/router/router.dart';
+import 'package:app/styles/styles.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();

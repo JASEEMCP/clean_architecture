@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:structure/presentation/main_screen/main_screen.dart';
-import 'package:structure/router/router_path.dart';
-import 'package:structure/router/transitions.dart';
+import 'package:app/presentation/main_screen/main_screen.dart';
+import 'package:app/router/router_path.dart';
+import 'package:app/router/transitions.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();

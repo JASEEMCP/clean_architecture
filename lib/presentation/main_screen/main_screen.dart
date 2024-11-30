@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:structure/styles/responsive_layout.dart';
+import 'package:app/styles/responsive_layout.dart';
 
 
 ValueNotifier<int> tabChangeNotifier = ValueNotifier<int>(0);

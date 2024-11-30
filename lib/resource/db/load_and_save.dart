@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/cupertino.dart';
-import 'package:structure/resource/db/pref_file.dart';
+import 'package:app/resource/db/pref_file.dart';
 
 
 mixin LoadAndSaveMixin {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:structure/styles/colors.dart';
+import 'package:app/styles/colors.dart';
 
 enum ThemeType {
   light,

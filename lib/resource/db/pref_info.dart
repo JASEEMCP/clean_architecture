@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:structure/domain/auth/token.dart';
-import 'package:structure/resource/db/load_and_save.dart';
+import 'package:app/domain/auth/token.dart';
+import 'package:app/resource/db/load_and_save.dart';
 
 
 @LazySingleton()

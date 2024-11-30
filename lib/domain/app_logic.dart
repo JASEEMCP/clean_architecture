@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:structure/main.dart';
-import 'package:structure/router/router_path.dart';
+import 'package:app/main.dart';
+import 'package:app/router/router_path.dart';
 
 
 

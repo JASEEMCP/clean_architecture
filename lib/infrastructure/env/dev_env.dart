@@ -1,6 +1,6 @@
 import 'package:envied/envied.dart';
-import 'package:structure/infrastructure/env/env.dart';
-import 'package:structure/infrastructure/env/env_keys.dart';
+import 'package:app/infrastructure/env/env.dart';
+import 'package:app/infrastructure/env/env_keys.dart';
 
 
 part 'dev_env.g.dart';

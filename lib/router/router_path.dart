@@ -1,6 +1,6 @@
 
 
-import 'package:structure/main.dart';
+import 'package:app/main.dart';
 
 class ScreenPath {
 

@@ -2,8 +2,8 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
-import 'package:structure/application/common/theme_cubit/theme_cubit.dart';
-import 'package:structure/resource/injectable.dart';
+import 'package:app/application/common/theme_cubit/theme_cubit.dart';
+import 'package:app/resource/injectable.dart';
 
 class RegisterCubits {
   List<SingleChildWidget> register() {

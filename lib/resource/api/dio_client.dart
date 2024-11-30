@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:structure/application/auth/token_cubit/token_cubit.dart';
-import 'package:structure/infrastructure/env/env.dart';
-import 'package:structure/main.dart';
+import 'package:app/application/auth/token_cubit/token_cubit.dart';
+import 'package:app/infrastructure/env/env.dart';
+import 'package:app/main.dart';
 
 enum DioMethodType { get, post, put, delete }
 

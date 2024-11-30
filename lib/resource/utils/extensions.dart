@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:structure/application/common/theme_cubit/theme_cubit.dart';
-import 'package:structure/main.dart';
-import 'package:structure/styles/responsive_layout.dart';
-import 'package:structure/styles/theme.dart';
+import 'package:app/application/common/theme_cubit/theme_cubit.dart';
+import 'package:app/main.dart';
+import 'package:app/styles/responsive_layout.dart';
+import 'package:app/styles/theme.dart';
 
 /// BuildContext
 extension BuildContextX on BuildContext {

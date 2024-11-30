@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:structure/resource/utils/extensions.dart';
+import 'package:app/resource/utils/extensions.dart';
 
 extension ControllerListX on List<TextEditingController> {
   // Checking is all empty

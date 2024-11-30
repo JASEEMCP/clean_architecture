@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:structure/application/common/theme_cubit/theme_cubit.dart';
-import 'package:structure/infrastructure/env/env.dart';
-import 'package:structure/resource/register_cubit.dart';
-import 'package:structure/resource/utils/extensions.dart';
-import 'package:structure/router/router.dart';
-import 'package:structure/styles/styles.dart';
-import 'package:structure/styles/theme.dart';
+import 'package:app/application/common/theme_cubit/theme_cubit.dart';
+import 'package:app/infrastructure/env/env.dart';
+import 'package:app/resource/register_cubit.dart';
+import 'package:app/resource/utils/extensions.dart';
+import 'package:app/router/router.dart';
+import 'package:app/styles/styles.dart';
+import 'package:app/styles/theme.dart';
 
 class RootApp extends StatelessWidget {
   const RootApp({super.key});
