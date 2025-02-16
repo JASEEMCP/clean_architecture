@@ -1,7 +1,11 @@
-import 'package:spa/presentation/widget/custom_button.dart';
-import 'package:spa/presentation/widget/custom_text_field_widget.dart';
-import 'package:spa/presentation/widget/helper_widget.dart';
-import 'package:spa/resource/utils/common_lib.dart';
+
+import 'package:app/presentation/widget/custom_button.dart';
+import 'package:app/presentation/widget/custom_text_field_widget.dart';
+import 'package:app/presentation/widget/helper_widget.dart';
+import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/resource/utils/extensions.dart';
+
+
 
 class ScreenLogin extends StatelessWidget {
   const ScreenLogin(
@@ -49,14 +53,14 @@ class ScreenLogin extends StatelessWidget {
             CustomTextButton(
               txt: 'Forgot password?',
               onTap: () {
-                context.push(ScreenPath.forgotPwd);
+               // context.push(ScreenPath.forgotPwd);
               },
             ),
             Gap(inset.sm),
             CustomButton(
               text: 'Login',
               onTap: () {
-                context.go(ScreenPath.home);
+                //context.go(ScreenPath.home);
               },
             ),
             Gap(inset.md),
@@ -64,7 +68,7 @@ class ScreenLogin extends StatelessWidget {
               child: CustomTextButton(
                 txt: 'Create Account?',
                 onTap: () {
-                  context.push(ScreenPath.signup);
+                  //context.push(ScreenPath.signup);
                 },
               ),
             ),

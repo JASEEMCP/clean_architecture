@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spa/styles/colors.dart';
+import 'package:app/styles/colors.dart';
 
 enum ThemeType {
   light,
@@ -33,17 +33,17 @@ class AppTheme {
           isDark: false,
           kBlack: AppColors.kBlack,
           kWhite: AppColors.kWhite,
-          spaPink: AppColors.primary,
-          spaDivider: AppColors.divider,
+          spaPink: AppColors.kBlack,
+          spaDivider: AppColors.kBlack,
         );
 
       case ThemeType.dark:
         return AppTheme(
           isDark: true,
-          kBlack: AppColors.kBlackDark,
-          kWhite: AppColors.kWhiteDark,
+          kBlack: AppColors.kBlack,
+          kWhite: AppColors.kBlack,
           spaPink: AppColors.primaryDark,
-          spaDivider: AppColors.dividerDark,
+          spaDivider: AppColors.kWhite,
         );
     }
   }

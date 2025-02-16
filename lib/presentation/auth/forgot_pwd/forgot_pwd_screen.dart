@@ -1,9 +1,11 @@
+import 'package:app/presentation/widget/custom_button.dart';
+import 'package:app/presentation/widget/custom_circle_btn.dart';
+import 'package:app/presentation/widget/custom_text_field_widget.dart';
+import 'package:app/presentation/widget/helper_widget.dart';
+import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/resource/utils/extensions.dart';
 import 'package:flutter/services.dart';
-import 'package:spa/presentation/widget/custom_button.dart';
-import 'package:spa/presentation/widget/custom_circle_btn.dart';
-import 'package:spa/presentation/widget/custom_text_field_widget.dart';
-import 'package:spa/presentation/widget/helper_widget.dart';
-import 'package:spa/resource/utils/common_lib.dart';
+
 
 class ScreenForgotPwd extends StatefulWidget {
   const ScreenForgotPwd({super.key});
@@ -23,7 +25,7 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
         centerTitle: false,
         title: CustomCircleBtn(
           onTap: () {
-            context.go(ScreenPath.login);
+            //context.go(ScreenPath.login);
           },
         ),
       ),
@@ -67,7 +69,7 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
               text: otpSended ? "Verify OTP" : 'Submit',
               onTap: () async {
                 if (otpSended) {
-                  context.push(ScreenPath.resetPwd());
+                  //context.push(ScreenPath.resetPwd());
                   return;
                 }
                 await Future.delayed(const Duration(seconds: 1));
@@ -80,7 +82,7 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
               child: CustomTextButton(
                 txt: 'Back',
                 onTap: () {
-                  context.push(ScreenPath.signup);
+                  //context.push(ScreenPath.signup);
                 },
               ),
             ),

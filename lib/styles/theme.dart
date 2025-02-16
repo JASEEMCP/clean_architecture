@@ -26,8 +26,8 @@ class AppTheme {
       case ThemeType.light:
         return AppTheme(
           isDark: false,
-          kBlack: AppColors.primary,
-          kWhite: AppColors.secondary,
+          kBlack: AppColors.kBlack,
+          kWhite: AppColors.kBlack,
         );
 
       case ThemeType.dark:

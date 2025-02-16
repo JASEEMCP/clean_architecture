@@ -5,6 +5,16 @@ import 'package:app/main.dart';
 class ScreenPath {
 
   static const splash = '/';
+  /// Auth routes
+  static const login = '/login';
+  static const signup = '/signup';
+  static submit() => _appendIdIntoCurrentPath('/submit');
+  static const forgotPwd = '/forgot';
+  static resetPwd(String email) => _appendIdIntoCurrentPath('/reset?e=$email');
+
+  /// Main routes
+  
+  static const home = '/home';
 
 
 

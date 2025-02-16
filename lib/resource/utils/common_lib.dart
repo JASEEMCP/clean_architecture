@@ -8,3 +8,4 @@ export 'package:go_router/go_router.dart';
 export 'package:app/router/router_path.dart';
 export 'package:app/resource/utils/validator.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:app/resource/utils/extensions.dart';

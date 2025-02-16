@@ -37,8 +37,19 @@ class AppRouter {
             child: child,
           );
         },
-        routes: const [
+        routes: [
           /// Home
+          GoRoute(
+            path: ScreenPath.login,
+            parentNavigatorKey: _shellNavigatorKey,
+            pageBuilder: (context, state) {
+              return const CustomTransitionPage(
+                child: Center(child: Text('Login')),
+                transitionsBuilder: useNavChangeTransition,
+              );
+            },
+          ),
+
           /// Profile
         ],
       ),

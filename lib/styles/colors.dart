@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   /// Light theme colors
-  static  Color primary = Colors.white;
-  static  Color secondary = Colors.black;
+  static  Color kBlack = Colors.white;
+  static  Color kWhite = Colors.black;
   
 
   /// Dark theme colors

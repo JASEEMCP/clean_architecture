@@ -22,7 +22,7 @@ class AppLogic {
       isBootStrapComplete = true;
       
  
-      appRouter.go(ScreenPath.splash);
+      appRouter.go(ScreenPath.login);
       
     } catch (e) {
       //appRouter.go(ScreenPath.login);

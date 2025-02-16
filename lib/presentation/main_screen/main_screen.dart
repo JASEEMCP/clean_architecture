@@ -1,5 +1,4 @@
-import 'package:spa/resource/utils/common_lib.dart';
-import 'package:spa/resource/utils/extensions.dart';
+import 'package:app/resource/utils/common_lib.dart';
 
 ValueNotifier<int> tabChangeNotifier = ValueNotifier<int>(0);
 
@@ -33,7 +32,7 @@ class _ScreenMainState extends State<ScreenMain> {
                     () {
                       tabChangeNotifier.value = 0;
                       if (index != 0) {
-                        context.go(ScreenPath.home);
+                        //context.go(ScreenPath.home);
                       }
                     },
                   ),
@@ -44,7 +43,7 @@ class _ScreenMainState extends State<ScreenMain> {
                     () {
                       tabChangeNotifier.value = 1;
                       if (index != 1) {
-                        context.go(ScreenPath.search);
+                        //context.go(ScreenPath.search);
                       }
                     },
                   ),
@@ -55,7 +54,7 @@ class _ScreenMainState extends State<ScreenMain> {
                     () {
                       tabChangeNotifier.value = 2;
                       if (index != 2) {
-                        context.go(ScreenPath.booking);
+                        //context.go(ScreenPath.booking);
                       }
                     },
                   ),
@@ -66,7 +65,7 @@ class _ScreenMainState extends State<ScreenMain> {
                     () {
                       tabChangeNotifier.value = 3;
                       if (index != 3) {
-                        context.go(ScreenPath.profile);
+                        //context.go(ScreenPath.profile);
                       }
                     },
                   ),
@@ -85,7 +84,7 @@ class _ScreenMainState extends State<ScreenMain> {
       child: Icon(
         isSelected ? selected : unSelected,
         size: 28,
-        color: isSelected ? context.theme.spaPink : context.theme.spaDivider,
+        color: isSelected ? context.theme.kBlack : context.theme.kWhite,
       ),
     );
   }

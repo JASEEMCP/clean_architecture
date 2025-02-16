@@ -1,8 +1,11 @@
-import 'package:spa/presentation/widget/custom_button.dart';
-import 'package:spa/presentation/widget/custom_circle_btn.dart';
-import 'package:spa/presentation/widget/custom_text_field_widget.dart';
-import 'package:spa/presentation/widget/helper_widget.dart';
-import 'package:spa/resource/utils/common_lib.dart';
+
+
+import 'package:app/presentation/widget/custom_button.dart';
+import 'package:app/presentation/widget/custom_circle_btn.dart';
+import 'package:app/presentation/widget/custom_text_field_widget.dart';
+import 'package:app/presentation/widget/helper_widget.dart';
+import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/resource/utils/extensions.dart';
 
 class ScreenResetPwd extends StatelessWidget {
   const ScreenResetPwd({super.key});
@@ -16,7 +19,7 @@ class ScreenResetPwd extends StatelessWidget {
         centerTitle: false,
         title: CustomCircleBtn(
           onTap: () {
-            context.go(ScreenPath.login);
+            //context.go(ScreenPath.login);
           },
         ),
       ),

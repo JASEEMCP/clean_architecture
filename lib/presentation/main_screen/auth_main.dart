@@ -1,4 +1,4 @@
-import 'package:spa/resource/utils/common_lib.dart';
+import 'package:app/resource/utils/common_lib.dart';
 
 class AuthMain extends StatelessWidget {
   const AuthMain({super.key, required this.child});

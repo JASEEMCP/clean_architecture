@@ -1,4 +1,4 @@
-import 'package:spa/main.dart';
+import 'package:app/main.dart';
 
 class ScreenPath {
   /// Auth routes

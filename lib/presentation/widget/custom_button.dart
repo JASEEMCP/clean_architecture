@@ -1,6 +1,6 @@
+import 'package:app/resource/utils/extensions.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:spa/presentation/widget/helper_widget.dart';
-import 'package:spa/resource/utils/common_lib.dart';
+import 'package:app/presentation/widget/helper_widget.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({

@@ -1,18 +1,14 @@
-import 'package:spa/presentation/appointment/appointment_screen.dart';
-import 'package:spa/presentation/appointment/screen/appointment_detail.dart';
-import 'package:spa/presentation/auth/forgot_pwd/forgot_pwd_screen.dart';
-import 'package:spa/presentation/auth/forgot_pwd/reset_forgot_pwd.dart';
-import 'package:spa/presentation/auth/login_screen.dart';
-import 'package:spa/presentation/auth/profile_submission_screen.dart';
-import 'package:spa/presentation/auth/sign_up_screen.dart';
-import 'package:spa/presentation/home/home_screen.dart';
-import 'package:spa/presentation/home/screen/branch_detail.dart';
-import 'package:spa/presentation/main_screen/auth_main.dart';
-import 'package:spa/presentation/main_screen/main_screen.dart';
-import 'package:spa/presentation/profile/profile_screen.dart';
-import 'package:spa/presentation/search/search_screen.dart';
-import 'package:spa/resource/utils/common_lib.dart';
-import 'package:spa/router/transitions.dart';
+
+import 'package:app/presentation/auth/forgot_pwd/forgot_pwd_screen.dart';
+import 'package:app/presentation/auth/forgot_pwd/reset_forgot_pwd.dart';
+import 'package:app/presentation/auth/login_screen.dart';
+import 'package:app/presentation/auth/profile_submission_screen.dart';
+import 'package:app/presentation/auth/sign_up_screen.dart';
+
+import 'package:app/presentation/main_screen/auth_main.dart';
+import 'package:app/presentation/main_screen/main_screen.dart';
+import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/router/transitions.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -115,81 +111,11 @@ class AppRouter {
         },
         routes: [
           /// Home
-          GoRoute(
-            path: ScreenPath.home,
-            parentNavigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state) {
-              return const MaterialPage(
-                child: ScreenHome(),
-              );
-            },
-            routes: [
-              GoRoute(
-                path: 'detail',
-                parentNavigatorKey: _rootNavigatorKey,
-                pageBuilder: (context, state) {
-                  return const MaterialPage(
-                    child: BranchDetail(),
-                  );
-                },
-              ),
-            ],
-          ),
-
-          /// Search
-          GoRoute(
-            path: ScreenPath.search,
-            parentNavigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state) {
-              return const MaterialPage(
-                child: ScreenSearchBooking(),
-              );
-            },
-            routes: [
-              GoRoute(
-                path: 'detail',
-                parentNavigatorKey: _rootNavigatorKey,
-                pageBuilder: (context, state) {
-                  return const MaterialPage(
-                    child: BranchDetail(),
-                  );
-                },
-              ),
-            ],
-          ),
-
+         
           /// Appointment Screen
-          GoRoute(
-            path: ScreenPath.booking,
-            parentNavigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state) {
-              return const MaterialPage(
-                child: ScreenAppointment(),
-              );
-            },
-            routes: [
-              GoRoute(
-                path: 'detail',
-                parentNavigatorKey: _rootNavigatorKey,
-                pageBuilder: (context, state) {
-                  return const MaterialPage(
-                    child: ScreenAppointmentDetail(),
-                  );
-                },
-              ),
-            ],
-          ),
-
+          
           /// Profile
-          GoRoute(
-            path: ScreenPath.profile,
-            parentNavigatorKey: _shellNavigatorKey,
-            pageBuilder: (context, state) {
-              return MaterialPage(
-                child: ScreenProfile(),
-              );
-            },
-          ),
+         
         ],
       ),
     ],

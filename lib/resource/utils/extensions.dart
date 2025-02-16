@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:app/application/common/theme_cubit/theme_cubit.dart';
@@ -15,10 +16,13 @@ extension BuildContextX on BuildContext {
   bool get isTablet => ResponsiveLayout.isTablet(this);
   bool get isDesktop => ResponsiveLayout.isDesktop(this);
 
+  void pushR(Widget screen) =>
+      Navigator.push(this, CupertinoPageRoute(builder: (ctx) => screen));
+
   void showCustomSnackBar(String content) =>
       ScaffoldMessenger.of(this).showSnackBar(showSnackBar(content));
-  
 }
+
 /// String
 extension StringStyling on String {
   String toCapitalized() =>
