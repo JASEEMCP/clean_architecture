@@ -3,7 +3,6 @@ import 'package:app/presentation/widget/custom_button.dart';
 import 'package:app/presentation/widget/custom_text_field_widget.dart';
 import 'package:app/presentation/widget/helper_widget.dart';
 import 'package:app/resource/utils/common_lib.dart';
-import 'package:app/resource/utils/extensions.dart';
 
 
 
@@ -35,7 +34,7 @@ class ScreenLogin extends StatelessWidget {
               txt:
                   'Welcome back to the app. Please log in with your email address',
               fontSize: 12,
-              color: context.theme.kBlack.withOpacity(0.4),
+              color: context.theme.kBlack.withValues(alpha:  0.4),
             ),
             Gap(inset.md),
             const CustomTextFieldWidget(

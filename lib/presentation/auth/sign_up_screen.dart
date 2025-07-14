@@ -3,7 +3,6 @@ import 'package:app/presentation/widget/custom_circle_btn.dart';
 import 'package:app/presentation/widget/custom_text_field_widget.dart';
 import 'package:app/presentation/widget/helper_widget.dart';
 import 'package:app/resource/utils/common_lib.dart';
-import 'package:app/resource/utils/extensions.dart';
 import 'package:flutter/services.dart';
 
 class ScreenSignup extends StatefulWidget {
@@ -41,7 +40,7 @@ class _ScreenSignupState extends State<ScreenSignup> {
             CustomText(
               txt: 'Please enter verified email address',
               fontSize: 12,
-              color: context.theme.kBlack.withOpacity(0.4),
+              color: context.theme.kBlack.withValues(alpha:  0.4),
             ),
             Gap(inset.md),
             const CustomTextFieldWidget(

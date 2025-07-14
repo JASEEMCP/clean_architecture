@@ -3,7 +3,6 @@
 
 
 import 'package:app/resource/utils/common_lib.dart';
-import 'package:app/resource/utils/extensions.dart';
 
 class CustomCircleBtn extends StatelessWidget {
   const CustomCircleBtn({
@@ -31,13 +30,13 @@ class CustomCircleBtn extends StatelessWidget {
           border: disableBorder ?? false
               ? null
               : Border.all(
-                  color: context.theme.kBlack.withOpacity(0.2),
+                  color: context.theme.kBlack.withValues(alpha:  0.2),
                 ),
           color: context.theme.kWhite,
         ),
         child: Icon(
           icon ?? Icons.arrow_back,
-          color: context.theme.kBlack.withOpacity(0.5),
+          color: context.theme.kBlack.withValues(alpha:  0.5),
         ),
       ),
     );

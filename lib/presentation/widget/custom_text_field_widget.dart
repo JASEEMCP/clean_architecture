@@ -1,6 +1,5 @@
 import 'package:app/presentation/widget/helper_widget.dart';
 import 'package:app/resource/utils/common_lib.dart';
-import 'package:app/resource/utils/extensions.dart';
 import 'package:flutter/services.dart';
 
 
@@ -60,7 +59,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   OutlineInputBorder _applyBorder(BuildContext context) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: context.theme.kBlack.withOpacity(0.2),
+        color: context.theme.kBlack.withValues(alpha:  0.2),
       ),
       borderRadius: BorderRadius.circular(8),
     );
