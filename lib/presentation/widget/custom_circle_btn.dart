@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:app/resource/utils/common_lib.dart';
 
 class CustomCircleBtn extends StatelessWidget {
@@ -11,12 +7,16 @@ class CustomCircleBtn extends StatelessWidget {
     this.icon,
     this.radius,
     this.disableBorder,
+    this.bgColor,
+    this.iconColor,
   });
 
   final Function() onTap;
   final IconData? icon;
   final double? radius;
   final bool? disableBorder;
+  final Color? bgColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +30,13 @@ class CustomCircleBtn extends StatelessWidget {
           border: disableBorder ?? false
               ? null
               : Border.all(
-                  color: context.theme.kBlack.withValues(alpha:  0.2),
+                  color: context.theme.kBlack.withValues(alpha: 0.2),
                 ),
-          color: context.theme.kWhite,
+          color: bgColor ?? context.theme.kWhite,
         ),
         child: Icon(
           icon ?? Icons.arrow_back,
-          color: context.theme.kBlack.withValues(alpha:  0.5),
+          color: iconColor ?? context.theme.kBlack.withValues(alpha: 0.5),
         ),
       ),
     );

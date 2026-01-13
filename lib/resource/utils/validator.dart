@@ -42,7 +42,8 @@ extension ControllerListX on List<TextEditingController> {
   bool isValidPasswordAt(int index) {
     if (index >= 0 && index < length) {
       final passwordRegExp = RegExp(
-          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
+      );
       return !passwordRegExp.hasMatch(this[index].text.trim());
     }
     return false;
@@ -57,7 +58,8 @@ extension ControllerListX on List<TextEditingController> {
 bool isValidUrl(String? url) {
   if (url == null) return false;
   final RegExp urlRegExp = RegExp(
-      r"^(https?):\/\/(?:www\.)?((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+([A-Za-z]{2,63}|[A-Za-z]{1,5}\.[A-Za-z]{2,63})(?::\d{1,5})?(?:\/[^\s]*)?$");
+    r"^(https?):\/\/(?:www\.)?((?!-)[A-Za-z0-9-]{1,63}(?<!-)\.)+([A-Za-z]{2,63}|[A-Za-z]{1,5}\.[A-Za-z]{2,63})(?::\d{1,5})?(?:\/[^\s]*)?$",
+  );
 
   // Check if the TLD is not a single character without a proper domain name
   if (urlRegExp.hasMatch(url)) {
@@ -126,8 +128,11 @@ String? handleNullString(TextEditingController controller) {
   return controller.text.trim();
 }
 
-String? handleEmptyString(TextEditingController controller,
-    {bool toUpper = false, bool isUrl = false}) {
+String? handleEmptyString(
+  TextEditingController controller, {
+  bool toUpper = false,
+  bool isUrl = false,
+}) {
   if (controller.text.trim().isEmpty) {
     return null;
   } else {

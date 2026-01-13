@@ -1,7 +1,5 @@
-
-
 import 'package:app/resource/utils/common_lib.dart';
-
+import 'package:app/resource/utils/extensions.dart';
 
 class CustomStadiumBtn extends StatelessWidget {
   const CustomStadiumBtn({
@@ -27,7 +25,7 @@ class CustomStadiumBtn extends StatelessWidget {
         shape: StadiumBorder(
           side: enableBorder ?? false
               ? BorderSide(
-                  color: context.theme.kBlack.withValues(alpha:  0.4),
+                  color: context.theme.kBlack.withOpacity(0.4),
                 )
               : BorderSide.none,
         ),

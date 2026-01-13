@@ -1,10 +1,8 @@
-
-
 import 'package:app/presentation/widget/custom_button.dart';
 import 'package:app/presentation/widget/custom_circle_btn.dart';
 import 'package:app/presentation/widget/custom_text_field_widget.dart';
-import 'package:app/presentation/widget/helper_widget.dart';
 import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/styles/colors.dart';
 
 class ScreenResetPwd extends StatelessWidget {
   const ScreenResetPwd({super.key});
@@ -13,46 +11,59 @@ class ScreenResetPwd extends StatelessWidget {
   Widget build(BuildContext context) {
     final inset = $style.insets;
     return Scaffold(
+      backgroundColor: AppColors.kSecondary,
       appBar: AppBar(
+        backgroundColor: AppColors.kSecondary,
         automaticallyImplyLeading: false,
         centerTitle: false,
         title: CustomCircleBtn(
+          disableBorder: true,
+          bgColor: AppColors.kSecondary,
+          iconColor: context.theme.kPrimaryGoldLight,
           onTap: () {
-            //context.go(ScreenPath.login);
+            context.pop();
           },
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: inset.sm),
+        padding: EdgeInsets.symmetric(horizontal: inset.sm * 2),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Gap(inset.md),
-            const CustomText(
-              txt: 'Reset Password',
-              fontSize: 22,
-            ),
-            Gap(inset.xs),
+            Gap(inset.customSize(150)),
             CustomText(
-              txt: 'Enter your new password here',
-              fontSize: 12,
-              color: context.theme.kBlack.withValues(alpha:  0.4),
+              txt: 'Reset Password',
+              fontSize: 24,
+              color: context.theme.kPrimaryGold,
             ),
+
             Gap(inset.lg),
-            const CustomTextFieldWidget(
+            CustomTextFieldWidget(
               label: 'Password',
+              hint: 'New password',
+              labelColor: context.theme.kPrimaryGold,
+              borderColor: AppColors.kSecondaryLight,
+              txtColor: AppColors.kGoldLight,
             ),
             Gap(inset.xs),
             CustomTextFieldWidget(
               label: 'Confirm Password',
+              labelColor: context.theme.kPrimaryGold,
+              borderColor: AppColors.kSecondaryLight,
+              txtColor: AppColors.kGoldLight,
               suffix: IconButton(
                 onPressed: () {},
-                icon: const Icon(Icons.visibility_off_outlined),
+                icon: Icon(
+                  Icons.visibility_off_outlined,
+                  color: context.theme.kPrimaryGold,
+                ),
               ),
             ),
             Gap(inset.sm),
             CustomButton(
               text: 'Submit',
+              bgColor: AppColors.kSecondaryLight,
+              textColor: context.theme.kPrimaryGold,
               onTap: () {},
             ),
           ],

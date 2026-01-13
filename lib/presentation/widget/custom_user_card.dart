@@ -1,0 +1,329 @@
+import 'package:app/domain/model/common/user_list_model/user_list_model.dart';
+import 'package:app/presentation/widget/custom_button.dart';
+import 'package:app/resource/url_launch.dart';
+import 'package:app/resource/utils/common_lib.dart';
+
+class CustomUserCard extends StatelessWidget {
+  const CustomUserCard({
+    super.key,
+    this.buttonName,
+    required this.onTap,
+    this.item,
+    this.child,
+  });
+  final String? buttonName;
+  final Function() onTap;
+  final UserListModel? item;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = $style.insets;
+    return Container(
+      //height: 100,
+      width: context.mq.width,
+      padding: EdgeInsets.all(inset.sm),
+      decoration: BoxDecoration(
+        color: context.theme.kWhite,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: context.theme.shadowGreyToYellowSwitcher(),
+            spreadRadius: 0,
+            blurRadius: 10,
+            offset: Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(
+                    txt: item?.name ?? 'N/A',
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.kSecondaryLight,
+                    fontSize: 18,
+                  ),
+                  IconButton.filled(
+                    style: TextButton.styleFrom(
+                      backgroundColor: context.theme.kBlack.withValues(
+                        alpha: 0.1,
+                      ),
+                    ),
+                    onPressed: () {
+                      openCall(item?.phoneNumber);
+                    },
+                    icon: Icon(
+                      Icons.call,
+                      color: Colors.green,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Divider(color: context.theme.kBlack.withValues(alpha: 0.1)),
+          Gap(inset.xs),
+
+          Row(
+            children: [
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.stars,
+                  color: Colors.green,
+                  txt: '${item?.rating ?? '0'} Rating',
+                ),
+              ),
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.work,
+                  txt: '${item?.totalWork ?? "0"} Works',
+                  color: Colors.orange,
+                ),
+              ),
+            ],
+          ),
+
+          Gap(inset.sm),
+          Row(
+            children: [
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.call,
+                  txt: item?.phoneNumber ?? 'N/A',
+                  color: Colors.indigo,
+                ),
+              ),
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.badge,
+                  txt: item?.level?.toTitleCase() ?? 'N/A',
+                  color: Colors.red,
+                  txtColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+          Gap(inset.sm),
+          child ??
+              Row(
+                spacing: inset.xs,
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      text: buttonName ?? 'Edit',
+                      textColor: context.theme.kBlack,
+                      bgColor: context.theme.kBlack.withValues(alpha: 0.1),
+                      onTap: onTap,
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomButton(
+                      text: 'Delete',
+                      textColor: context.theme.kWhite,
+                      bgColor: Colors.redAccent,
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              ),
+        ],
+      ),
+    );
+  }
+
+  Row _buildIconText(
+    BuildContext context, {
+    required IconData icon,
+    required String txt,
+    Color? color,
+    Color? txtColor,
+  }) {
+    final inset = $style.insets;
+    return Row(
+      spacing: inset.xs,
+      children: [
+        Icon(
+          icon,
+          color: color ?? context.theme.kSecondaryLight,
+          size: 20,
+        ),
+        CustomText(
+          txt: txt,
+          color: txtColor ?? context.theme.kSecondary,
+          fontSize: 12,
+        ),
+      ],
+    );
+  }
+}
+
+class CustomUserPaymentCard extends StatelessWidget {
+  const CustomUserPaymentCard({
+    super.key,
+    this.buttonName,
+    required this.onTap,
+  });
+  final String? buttonName;
+  final Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = $style.insets;
+    return Container(
+      //height: 100,
+      width: context.mq.width,
+      padding: EdgeInsets.all(inset.sm),
+      decoration: BoxDecoration(
+        color: context.theme.kWhite,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: const Color.fromARGB(255, 221, 212, 212),
+            spreadRadius: 0,
+            blurRadius: 10,
+            offset: Offset(0, 1),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(
+                    txt: 'User Name',
+                    fontWeight: FontWeight.w500,
+                    color: context.theme.kSecondaryLight,
+                    fontSize: 18,
+                  ),
+                  IconButton.filled(
+                    style: TextButton.styleFrom(
+                      backgroundColor: context.theme.kBlack.withValues(
+                        alpha: 0.1,
+                      ),
+                    ),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.call,
+                      color: context.theme.kSecondaryLight,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+
+              CustomText(
+                txt: 'Junior',
+                fontWeight: FontWeight.normal,
+                fontSize: 12,
+              ),
+            ],
+          ),
+          Divider(color: context.theme.kBlack.withValues(alpha: 0.1)),
+          Gap(inset.xs),
+
+          Row(
+            children: [
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.stars,
+                  color: Colors.green,
+                  txt: '4.9 Rating',
+                ),
+              ),
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.work,
+                  txt: '10 Works',
+                  color: Colors.orange,
+                ),
+              ),
+            ],
+          ),
+
+          Gap(inset.sm),
+          Row(
+            children: [
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.call,
+                  txt: '+91 6754387643',
+                  color: Colors.indigo,
+                ),
+              ),
+              Expanded(
+                child: _buildIconText(
+                  context,
+                  icon: Icons.badge,
+                  txt: 'Supervisor',
+                  color: Colors.red,
+                  txtColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+          Gap(inset.sm),
+          CustomText(
+            txt: '₹535',
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+            fontSize: 22,
+          ),
+          Gap(inset.sm),
+          CustomButton(
+            text: buttonName ?? 'Pay Now',
+            textColor: context.theme.kWhite,
+            bgColor: Colors.blueAccent,
+            onTap: onTap,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Row _buildIconText(
+    BuildContext context, {
+    required IconData icon,
+    required String txt,
+    Color? color,
+    Color? txtColor,
+  }) {
+    final inset = $style.insets;
+    return Row(
+      spacing: inset.xs,
+      children: [
+        Icon(
+          icon,
+          color: color ?? context.theme.kSecondaryLight,
+          size: 20,
+        ),
+        CustomText(
+          txt: txt,
+          color: txtColor ?? context.theme.kSecondary,
+          fontSize: 12,
+        ),
+      ],
+    );
+  }
+}

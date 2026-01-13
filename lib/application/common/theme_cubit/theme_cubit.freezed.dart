@@ -12,7 +12,8 @@ part of 'theme_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ThemeState {
@@ -20,47 +21,42 @@ mixin _$ThemeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(ThemeType theme) theme,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(ThemeType theme)? theme,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ThemeType theme)? theme,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Theme value) theme,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Theme value)? theme,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Theme value)? theme,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ThemeStateCopyWith<$Res> {
   factory $ThemeStateCopyWith(
-          ThemeState value, $Res Function(ThemeState) then) =
-      _$ThemeStateCopyWithImpl<$Res, ThemeState>;
+    ThemeState value,
+    $Res Function(ThemeState) then,
+  ) = _$ThemeStateCopyWithImpl<$Res, ThemeState>;
 }
 
 /// @nodoc
@@ -72,13 +68,17 @@ class _$ThemeStateCopyWithImpl<$Res, $Val extends ThemeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -86,8 +86,12 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$ThemeStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -179,8 +183,9 @@ abstract class _Initial implements ThemeState {
 /// @nodoc
 abstract class _$$ThemeImplCopyWith<$Res> {
   factory _$$ThemeImplCopyWith(
-          _$ThemeImpl value, $Res Function(_$ThemeImpl) then) =
-      __$$ThemeImplCopyWithImpl<$Res>;
+    _$ThemeImpl value,
+    $Res Function(_$ThemeImpl) then,
+  ) = __$$ThemeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ThemeType theme});
 }
@@ -190,20 +195,23 @@ class __$$ThemeImplCopyWithImpl<$Res>
     extends _$ThemeStateCopyWithImpl<$Res, _$ThemeImpl>
     implements _$$ThemeImplCopyWith<$Res> {
   __$$ThemeImplCopyWithImpl(
-      _$ThemeImpl _value, $Res Function(_$ThemeImpl) _then)
-      : super(_value, _then);
+    _$ThemeImpl _value,
+    $Res Function(_$ThemeImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? theme = null,
-  }) {
-    return _then(_$ThemeImpl(
-      null == theme
-          ? _value.theme
-          : theme // ignore: cast_nullable_to_non_nullable
-              as ThemeType,
-    ));
+  $Res call({Object? theme = null}) {
+    return _then(
+      _$ThemeImpl(
+        null == theme
+            ? _value.theme
+            : theme // ignore: cast_nullable_to_non_nullable
+                  as ThemeType,
+      ),
+    );
   }
 }
 
@@ -231,7 +239,9 @@ class _$ThemeImpl implements _Theme {
   @override
   int get hashCode => Object.hash(runtimeType, theme);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ThemeImplCopyWith<_$ThemeImpl> get copyWith =>
@@ -304,7 +314,10 @@ abstract class _Theme implements ThemeState {
   const factory _Theme(final ThemeType theme) = _$ThemeImpl;
 
   ThemeType get theme;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ThemeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ThemeImplCopyWith<_$ThemeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -19,23 +19,22 @@ extension BuildContextX on BuildContext {
   void pushR(Widget screen) =>
       Navigator.push(this, CupertinoPageRoute(builder: (ctx) => screen));
 
-  void showCustomSnackBar(String content) =>
-      ScaffoldMessenger.of(this).showSnackBar(showSnackBar(content));
+  void showCustomSnackBar(String content, [Color? color]) =>
+      ScaffoldMessenger.of(this).showSnackBar(showSnackBar(content, color));
 }
 
 /// String
 extension StringStyling on String {
   String toCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
-  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
-      .split(' ')
-      .map((str) => str.toCapitalized())
-      .join(' ');
+  String toTitleCase() => replaceAll(
+    RegExp(' +'),
+    ' ',
+  ).split(' ').map((str) => str.toCapitalized()).join(' ');
 }
 
-SnackBar showSnackBar(String content) {
+SnackBar showSnackBar(String content, [Color? color]) {
   return SnackBar(
-    width: 380,
     dismissDirection: DismissDirection.down,
     duration: const Duration(milliseconds: 1400),
     elevation: 0,
@@ -44,10 +43,15 @@ SnackBar showSnackBar(String content) {
         content,
         textScaler: const TextScaler.linear(1),
         textAlign: TextAlign.center,
-        style: $style.text.textBold14,
+        maxLines: 3,
+        style: $style.text.textSBold14.copyWith(
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     ),
-    backgroundColor: const Color.fromARGB(255, 144, 143, 145),
+    backgroundColor: color,
     behavior: SnackBarBehavior.floating,
   );
 }

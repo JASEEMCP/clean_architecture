@@ -12,7 +12,8 @@ part of 'token_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$TokenState {
@@ -20,47 +21,42 @@ mixin _$TokenState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Token? token) authorized,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Token? token)? authorized,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Token? token)? authorized,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Authorized value) authorized,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Authorized value)? authorized,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Authorized value)? authorized,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TokenStateCopyWith<$Res> {
   factory $TokenStateCopyWith(
-          TokenState value, $Res Function(TokenState) then) =
-      _$TokenStateCopyWithImpl<$Res, TokenState>;
+    TokenState value,
+    $Res Function(TokenState) then,
+  ) = _$TokenStateCopyWithImpl<$Res, TokenState>;
 }
 
 /// @nodoc
@@ -72,13 +68,17 @@ class _$TokenStateCopyWithImpl<$Res, $Val extends TokenState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TokenState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+    _$InitialImpl value,
+    $Res Function(_$InitialImpl) then,
+  ) = __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -86,8 +86,12 @@ class __$$InitialImplCopyWithImpl<$Res>
     extends _$TokenStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
+    _$InitialImpl _value,
+    $Res Function(_$InitialImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of TokenState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -179,8 +183,9 @@ abstract class _Initial implements TokenState {
 /// @nodoc
 abstract class _$$AuthorizedImplCopyWith<$Res> {
   factory _$$AuthorizedImplCopyWith(
-          _$AuthorizedImpl value, $Res Function(_$AuthorizedImpl) then) =
-      __$$AuthorizedImplCopyWithImpl<$Res>;
+    _$AuthorizedImpl value,
+    $Res Function(_$AuthorizedImpl) then,
+  ) = __$$AuthorizedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Token? token});
 }
@@ -190,20 +195,23 @@ class __$$AuthorizedImplCopyWithImpl<$Res>
     extends _$TokenStateCopyWithImpl<$Res, _$AuthorizedImpl>
     implements _$$AuthorizedImplCopyWith<$Res> {
   __$$AuthorizedImplCopyWithImpl(
-      _$AuthorizedImpl _value, $Res Function(_$AuthorizedImpl) _then)
-      : super(_value, _then);
+    _$AuthorizedImpl _value,
+    $Res Function(_$AuthorizedImpl) _then,
+  ) : super(_value, _then);
 
+  /// Create a copy of TokenState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? token = freezed,
-  }) {
-    return _then(_$AuthorizedImpl(
-      freezed == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as Token?,
-    ));
+  $Res call({Object? token = freezed}) {
+    return _then(
+      _$AuthorizedImpl(
+        freezed == token
+            ? _value.token
+            : token // ignore: cast_nullable_to_non_nullable
+                  as Token?,
+      ),
+    );
   }
 }
 
@@ -231,7 +239,9 @@ class _$AuthorizedImpl implements _Authorized {
   @override
   int get hashCode => Object.hash(runtimeType, token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TokenState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthorizedImplCopyWith<_$AuthorizedImpl> get copyWith =>
@@ -304,7 +314,10 @@ abstract class _Authorized implements TokenState {
   const factory _Authorized(final Token? token) = _$AuthorizedImpl;
 
   Token? get token;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TokenState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthorizedImplCopyWith<_$AuthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

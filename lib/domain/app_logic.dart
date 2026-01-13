@@ -1,8 +1,7 @@
+import 'package:app/application/auth/token_cubit/token_cubit.dart';
 import 'package:injectable/injectable.dart';
 import 'package:app/main.dart';
 import 'package:app/router/router_path.dart';
-
-
 
 @lazySingleton
 class AppLogic {
@@ -16,14 +15,16 @@ class AppLogic {
       await pref.load();
 
       /// Initializing token state
-      //await tokenCubit.initTokenState();
+      await tokenCubit.initTokenState();
 
       ///Flagging bootstrap
       isBootStrapComplete = true;
-      
- 
-      appRouter.go(ScreenPath.login);
-      
+
+      if (tokenCubit.state.isAuthenticated) {
+        appRouter.go(ScreenPath.home);
+      } else {
+        appRouter.go(ScreenPath.login);
+      }
     } catch (e) {
       //appRouter.go(ScreenPath.login);
     }

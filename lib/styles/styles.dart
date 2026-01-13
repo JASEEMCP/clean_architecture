@@ -1,6 +1,6 @@
-
-
 // ignore_for_file: library_private_types_in_public_api
+
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:app/styles/colors.dart';
@@ -13,15 +13,16 @@ class AppStyle {
       return;
     }
     final shortestSide = screenSize.shortestSide;
-    const mobile = 600;
-    const tablet = 1100;
+    log(shortestSide.toString());
+    const mobile = 370;
+    const tablet = 600;
 
     if (shortestSide > tablet) {
       scale = 1.5;
-    } else if (shortestSide < tablet && shortestSide > mobile) {
-      scale = 1;
+    } else if (shortestSide >= tablet && shortestSide > mobile) {
+      scale = 1.3;
     } else {
-      scale = 1;
+      scale = 0.9;
     }
   }
 
@@ -95,8 +96,11 @@ class _TextStyles {
   late final TextStyle textEB22 = _createFont(hEBold, sizePx: fSize.s22);
   late final TextStyle textEB26 = _createFont(hEBold, sizePx: fSize.s26);
 
-  TextStyle _createFont(TextStyle style,
-      {required double sizePx, String? fontFamily}) {
+  TextStyle _createFont(
+    TextStyle style, {
+    required double sizePx,
+    String? fontFamily,
+  }) {
     sizePx *= scale;
     return style.copyWith(
       fontFamily: fontFamily,
@@ -142,7 +146,7 @@ class _Insets {
   _Insets(this._scale);
   final double _scale;
 
-   late final double xxxs = 2 * _scale;
+  late final double xxxs = 2 * _scale;
   late final double xxs = 4 * _scale;
   late final double xs = 8 * _scale;
   late final double sm = 16 * _scale;
@@ -151,5 +155,5 @@ class _Insets {
   late final double xl = 48 * _scale;
   late final double xxl = 56 * _scale;
   late final double offset = 80 * _scale;
-  double customSize (double s)=> s * _scale;
+  double customSize(double s) => s * _scale;
 }

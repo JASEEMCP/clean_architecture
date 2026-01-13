@@ -1,14 +1,22 @@
+import 'package:app/router/auth_shell.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:app/presentation/main_screen/main_screen.dart';
 import 'package:app/router/router_path.dart';
-import 'package:app/router/transitions.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static GoRouter get router => _router;
+
+  static push(Widget page) {
+    _router.routerDelegate.navigatorKey.currentState?.push(
+      MaterialPageRoute(
+        builder: (ctx) => page,
+      ),
+    );
+  }
 
   static final GoRouter _router = GoRouter(
     initialLocation: ScreenPath.splash,
@@ -21,12 +29,15 @@ class AppRouter {
         path: ScreenPath.splash,
         parentNavigatorKey: _rootNavigatorKey,
         pageBuilder: (context, state) {
-          return CustomTransitionPage(
+          return MaterialPage(
             child: Container(),
-            transitionsBuilder: useNavChangeTransition,
+            // transitionsBuilder: useNavChangeTransition,
           );
         },
       ),
+
+      /// Auth Shell
+      ...AuthShell().authList,
 
       ///Navigation shell
       ShellRoute(
@@ -40,17 +51,19 @@ class AppRouter {
         routes: [
           /// Home
           GoRoute(
-            path: ScreenPath.login,
+            path: ScreenPath.home,
             parentNavigatorKey: _shellNavigatorKey,
             pageBuilder: (context, state) {
-              return const CustomTransitionPage(
-                child: Center(child: Text('Login')),
-                transitionsBuilder: useNavChangeTransition,
+              return MaterialPage(
+                child: Container(),
+                // transitionsBuilder: useNavChangeTransition,
               );
             },
+            
           ),
 
-          /// Profile
+
+
         ],
       ),
     ],

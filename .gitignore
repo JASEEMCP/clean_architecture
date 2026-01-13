@@ -21,6 +21,9 @@ migrate_working_dir/
 **lib/infrastructure/env/prod_env.g.dart
 **lib/infrastructure/env/dev_env.g.dart
 
+*.env.dev
+*.env.prod
+
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.

@@ -1,10 +1,9 @@
 import 'package:app/presentation/widget/custom_button.dart';
 import 'package:app/presentation/widget/custom_circle_btn.dart';
 import 'package:app/presentation/widget/custom_text_field_widget.dart';
-import 'package:app/presentation/widget/helper_widget.dart';
 import 'package:app/resource/utils/common_lib.dart';
+import 'package:app/styles/colors.dart';
 import 'package:flutter/services.dart';
-
 
 class ScreenForgotPwd extends StatefulWidget {
   const ScreenForgotPwd({super.key});
@@ -19,40 +18,55 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
   Widget build(BuildContext context) {
     final inset = $style.insets;
     return Scaffold(
+      backgroundColor: AppColors.kSecondary,
       appBar: AppBar(
+        backgroundColor: AppColors.kSecondary,
         automaticallyImplyLeading: false,
         centerTitle: false,
         title: CustomCircleBtn(
+          disableBorder: true,
+          bgColor: AppColors.kSecondary,
+          iconColor: context.theme.kPrimaryGoldLight,
           onTap: () {
-            //context.go(ScreenPath.login);
+            context.pop();
           },
         ),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: inset.sm),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: inset.sm * 2),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Gap(inset.md),
-            const CustomText(
-              txt: 'Forgot Password',
-              fontSize: 22,
-            ),
-            Gap(inset.xs),
+            Gap(inset.customSize(150)),
             CustomText(
-              txt: 'Enter your registered email address ',
-              fontSize: 12,
-              color: context.theme.kBlack.withValues(alpha:  0.4),
+              txt: 'Forgot Password',
+              fontSize: 24,
+              color: context.theme.kPrimaryGold,
             ),
+
             Gap(inset.lg),
-            const CustomTextFieldWidget(
+            CustomTextFieldWidget(
               label: 'Email Address',
+              hint: 'Registered email address',
+              labelColor: context.theme.kPrimaryGold,
+              borderColor: AppColors.kSecondaryLight,
+              txtColor: AppColors.kGoldLight,
             ),
             Gap(inset.xs),
             if (otpSended)
               CustomTextFieldWidget(
                 label: 'OTP',
                 type: TextInputType.number,
+                labelColor: context.theme.kPrimaryGold,
+                borderColor: AppColors.kSecondaryLight,
+                txtColor: AppColors.kGoldLight,
+                suffix: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.refresh,
+                    color: context.theme.kPrimaryGold,
+                  ),
+                ),
                 inputFormatters: [LengthLimitingTextInputFormatter(5)],
               ),
             Gap(inset.sm),
@@ -60,15 +74,22 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
               Center(
                 child: CustomTextButton(
                   txt: 'Resend OTP?',
+                  fontWeight: FontWeight.normal,
+                  fontSize: 16,
+
+                  color: context.theme.kPrimaryGoldLight,
                   onTap: () {},
                 ),
               ),
             Gap(inset.sm),
             CustomButton(
               text: otpSended ? "Verify OTP" : 'Submit',
+              bgColor: AppColors.kSecondaryLight,
+              textColor: AppColors.kGold,
+
               onTap: () async {
                 if (otpSended) {
-                  //context.push(ScreenPath.resetPwd());
+                  context.push(ScreenPath.forgotNewPwd);
                   return;
                 }
                 await Future.delayed(const Duration(seconds: 1));
@@ -79,9 +100,13 @@ class _ScreenForgotPwdState extends State<ScreenForgotPwd> {
             Gap(inset.md),
             Center(
               child: CustomTextButton(
-                txt: 'Back',
+                txt: 'Already have an account? Login',
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+
+                color: AppColors.kGoldLight,
                 onTap: () {
-                  //context.push(ScreenPath.signup);
+                  context.push(ScreenPath.login);
                 },
               ),
             ),

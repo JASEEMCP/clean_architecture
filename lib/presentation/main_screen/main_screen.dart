@@ -1,6 +1,10 @@
 import 'package:app/resource/utils/common_lib.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 
 ValueNotifier<int> tabChangeNotifier = ValueNotifier<int>(0);
+ValueNotifier<bool> hideNavBarNotifier = ValueNotifier(false);
+final ScrollController scrollController = ScrollController();
 
 class ScreenMain extends StatefulWidget {
   const ScreenMain({super.key, required this.child});
@@ -13,79 +17,145 @@ class ScreenMain extends StatefulWidget {
 
 class _ScreenMainState extends State<ScreenMain> {
   @override
+  void initState() {
+    super.initState();
+
+    scrollController.addListener(() {
+      final direction = scrollController.position.userScrollDirection;
+
+      if (direction == ScrollDirection.reverse) {
+        hideNavBarNotifier.value = true;
+      } else if (direction == ScrollDirection.forward) {
+        hideNavBarNotifier.value = false;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final inset = $style.insets;
-    return Scaffold(
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(inset.sm),
-        height: kBottomNavigationBarHeight,
-        child: ValueListenableBuilder(
-            valueListenable: tabChangeNotifier,
-            builder: (context, index, _) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildNavIconBtn(
-                    index == 0,
-                    Icons.home_outlined,
-                    Icons.home_rounded,
-                    () {
-                      tabChangeNotifier.value = 0;
-                      if (index != 0) {
-                        //context.go(ScreenPath.home);
-                      }
-                    },
-                  ),
-                  _buildNavIconBtn(
-                    index == 1,
-                    Icons.search_outlined,
-                    Icons.search,
-                    () {
-                      tabChangeNotifier.value = 1;
-                      if (index != 1) {
-                        //context.go(ScreenPath.search);
-                      }
-                    },
-                  ),
-                  _buildNavIconBtn(
-                    index == 2,
-                    Icons.calendar_month_outlined,
-                    Icons.calendar_month,
-                    () {
-                      tabChangeNotifier.value = 2;
-                      if (index != 2) {
-                        //context.go(ScreenPath.booking);
-                      }
-                    },
-                  ),
-                  _buildNavIconBtn(
-                    index == 3,
-                    Icons.person_outline,
-                    Icons.person,
-                    () {
-                      tabChangeNotifier.value = 3;
-                      if (index != 3) {
-                        //context.go(ScreenPath.profile);
-                      }
-                    },
-                  ),
-                ],
-              );
-            }),
-      ),
-      body: widget.child,
+    // final inset = $style.insets;
+    final userType = pref.token.value.userType;
+    return ValueListenableBuilder(
+      valueListenable: tabChangeNotifier,
+      builder: (context, currentIndex, child) {
+        return ValueListenableBuilder(
+          valueListenable: hideNavBarNotifier,
+          builder: (context, hide, child) {
+            return _buildNavBar("", 0);
+          },
+        );
+      },
     );
   }
 
-  GestureDetector _buildNavIconBtn(bool isSelected, IconData unSelected,
-      IconData selected, Function() onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Icon(
-        isSelected ? selected : unSelected,
-        size: 28,
-        color: isSelected ? context.theme.kBlack : context.theme.kWhite,
-      ),
+  CupertinoTabBar _ios18BelowNavBar(
+    BuildContext context,
+    String? userType,
+    int currentIndex,
+  ) {
+    return CupertinoTabBar(
+      backgroundColor: context.theme.kWhite,
+      height: 65,
+      activeColor: context.theme.kPrimaryGold,
+      inactiveColor: context.theme.kBlack.withValues(alpha: 0.5),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.star_circle),
+          activeIcon: Icon(CupertinoIcons.star_circle_fill),
+          label: 'Top Chart',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.calendar_circle),
+          activeIcon: Icon(CupertinoIcons.calendar_circle_fill),
+          label: 'Event',
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.arrow_left_right_square),
+          activeIcon: Icon(CupertinoIcons.arrow_left_right_square_fill),
+          label: ((userType == 'admin')) ? "Payment" : 'Transaction',
+        ),
+        if ((userType == 'admin'))
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person_crop_circle_badge_plus),
+            activeIcon: Icon(
+              CupertinoIcons.person_crop_circle_fill_badge_plus,
+            ),
+            label: 'Add',
+          ),
+        if ((userType == 'admin'))
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.doc_circle),
+            activeIcon: Icon(CupertinoIcons.doc_circle_fill),
+            label: 'Report',
+          ),
+      ],
+      onTap: (value) {
+        _onTabChange(value, context);
+      },
+      currentIndex: currentIndex,
+    );
+  }
+
+  void _onTabChange(int value, BuildContext context) {
+    if (value == 0) {
+      context.go(ScreenPath.home);
+    } else if (value == 1) {
+      context.go(ScreenPath.events);
+    } else if (value == 2) {
+      context.go(ScreenPath.transaction);
+    } else if (value == 3) {
+      context.go(ScreenPath.addUser);
+    } else if (value == 4) {
+      context.go(ScreenPath.report);
+    }
+    tabChangeNotifier.value = value;
+  }
+
+  // For Android Bottom Navigation Bar
+  BottomNavigationBar _buildNavBar(String? userType, int currentIndex) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      elevation: 0,
+      backgroundColor: context.theme.kSecondary,
+      currentIndex: currentIndex,
+      selectedItemColor: context.theme.kPrimaryGold,
+      unselectedItemColor: context.theme.kBlack.withValues(alpha: 0.5),
+      onTap: (value) {
+        _onTabChange(value, context);
+      },
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.star_circle),
+          activeIcon: Icon(CupertinoIcons.star_circle_fill),
+          label: 'Top Chart',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.calendar_circle),
+          activeIcon: Icon(CupertinoIcons.calendar_circle_fill),
+          label: 'Event',
+        ),
+
+        BottomNavigationBarItem(
+          icon: Icon(CupertinoIcons.arrow_left_right_square),
+          activeIcon: Icon(CupertinoIcons.arrow_left_right_square_fill),
+          label: ((userType == 'admin')) ? "Payment" : 'Transaction',
+        ),
+        if ((userType == 'admin'))
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.person_crop_circle_badge_plus),
+            activeIcon: Icon(
+              CupertinoIcons.person_crop_circle_fill_badge_plus,
+            ),
+            label: 'Add',
+          ),
+        if ((userType == 'admin'))
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.doc_circle),
+            activeIcon: Icon(CupertinoIcons.doc_circle_fill),
+            label: 'Report',
+          ),
+      ],
     );
   }
 }

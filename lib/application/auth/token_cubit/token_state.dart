@@ -14,18 +14,18 @@ extension TokenStateX on TokenState {
 
   ///getting value user authenticated or not
   bool get isAuthenticated => when(
-        initial: () => false,
-        authorized: (_) => true,
-      );
+    initial: () => false,
+    authorized: (_) => true,
+  );
 
   ///Assign value to header
   Map<String, String> toAuthorizationHeader() => maybeWhen(
-        authorized: (t) => {
-          'Content-Type': 'application/json',
-          "Authorization": "Bearer ${t?.accessToken}",
-        },
-        orElse: () => {
-          'Content-Type': 'application/json',
-        },
-      );
+    authorized: (t) => {
+      'Content-Type': 'application/json',
+      "Authorization": "Bearer ${t?.accessToken}",
+    },
+    orElse: () => {
+      'Content-Type': 'application/json',
+    },
+  );
 }

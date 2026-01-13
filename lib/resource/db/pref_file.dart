@@ -14,7 +14,9 @@ class PrefFile {
 
   ///Save data into local storage
   Future<void> save(Map<String, dynamic> data) async {
-    await const FlutterSecureStorage()
-        .write(key: fileName, value: jsonEncode(data));
+    await const FlutterSecureStorage().write(
+      key: fileName,
+      value: jsonEncode(data),
+    );
   }
 }

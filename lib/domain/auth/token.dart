@@ -4,34 +4,28 @@ part 'token.g.dart';
 
 @JsonSerializable()
 class Token {
-  @JsonKey(name: 'refresh_token')
+  @JsonKey(name: 'refresh')
   String? refreshToken;
-  @JsonKey(name: 'access_token')
+  @JsonKey(name: 'access')
   String? accessToken;
-  
+  @JsonKey(name: 'user_type')
+  String? userType;
 
-  Token({
-    this.refreshToken,
-    this.accessToken,
-    
-  });
+  Token({this.refreshToken, this.accessToken, this.userType});
 
   factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 
   Map<String, dynamic> toJson() => _$TokenToJson(this);
 
-  Token copyWith(
-      {String? refreshToken,
-      String? accessToken,
-      bool? isProfileCreated,
-      String? fullName,
-      String? instituteFullName,
-      String? instituteShortName,
-      bool? isSubmit}) {
+  Token copyWith({
+    String? refreshToken,
+    String? accessToken,
+    String? userType,
+  }) {
     return Token(
       refreshToken: refreshToken ?? this.refreshToken,
       accessToken: accessToken ?? this.accessToken,
-      
+      userType: userType ?? this.userType,
     );
   }
 }

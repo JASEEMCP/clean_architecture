@@ -41,6 +41,7 @@ class DioClient {
           handler.next(options); // Continue with the request
         },
         onError: (e, handler) async {
+          print(e.response?.statusCode);
           if (e.type == DioExceptionType.connectionError) {
             return handler.reject(e);
           }
@@ -52,17 +53,22 @@ class DioClient {
               final result = await tokenCubit.refreshToken();
 
               if (result != null) {
-                addToken(dio, tokenCubit.state);
+                addToken(instance, tokenCubit.state);
                 final opts = Options(method: e.requestOptions.method);
-                final response = await _dio.request(
-                  e.requestOptions.path,
-                  options: opts,
-                  cancelToken: e.requestOptions.cancelToken,
-                  onReceiveProgress: e.requestOptions.onReceiveProgress,
-                  data: e.requestOptions.data,
-                  queryParameters: e.requestOptions.queryParameters,
-                );
-                handler.resolve(response);
+                try {
+                  final response = await _dio.request(
+                    e.requestOptions.path,
+                    options: opts,
+                    cancelToken: e.requestOptions.cancelToken,
+                    onReceiveProgress: e.requestOptions.onReceiveProgress,
+                    data: e.requestOptions.data,
+                    queryParameters: e.requestOptions.queryParameters,
+                  );
+
+                  handler.resolve(response);
+                } on DioException catch (e) {
+                  handler.reject(e);
+                }
               }
             }
           } else {
@@ -80,14 +86,18 @@ class DioClient {
     /// Listen token cubit and assign header value with corresponding TokenState
     tokenCubitSubscription = tokenCubit.stream.listen(
       (event) {
-        if (!event.isAuthenticated) {
-          addToken(_dio, tokenCubit.state);
+        if (event.isAuthenticated) {
+          // Add token when authenticated
+          addToken(_dio, event);
+        } else {
+          // Clear headers when logged out
+          _dio.options.headers.remove('Authorization');
         }
       },
     );
   }
 
-  Dio get dio => _dio;
+  Dio get instance => _dio;
 
   void dispose() {
     tokenCubitSubscription.cancel();
@@ -107,6 +117,5 @@ class DioClient {
     final refreshToken = pref.token.value.refreshToken ?? '';
     final accessToken = pref.token.value.accessToken ?? '';
     return refreshToken.isNotEmpty && accessToken.isNotEmpty;
-    
   }
 }
